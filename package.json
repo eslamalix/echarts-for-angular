@@ -21,7 +21,9 @@
     "@angular/platform-browser": "~13.3.8",
     "@angular/platform-browser-dynamic": "~13.3.8",
     "@angular/router": "~13.3.8",
+    "@arcgis/core": "^4.24.7",
     "echarts": "^5.3.2",
+    "esri-loader": "^3.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"

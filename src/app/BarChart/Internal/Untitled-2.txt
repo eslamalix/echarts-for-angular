@@ -1,0 +1,14 @@
+this.http.get('assets/csvLayers/buildings.csv', { responseType: 'text' })
+    .subscribe(
+        data => {
+            let csvToRowArray = data.split("\n");
+            for (let index = 0; index < csvToRowArray.length; index++) {
+                let row = csvToRowArray[index].split(",");
+                this.userArray.push(row);
+            }
+            console.log(this.userArray);
+        },
+        error => {
+            console.log(error);
+        }
+    );

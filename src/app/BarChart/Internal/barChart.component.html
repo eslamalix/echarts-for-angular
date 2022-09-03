@@ -1,4 +1,8 @@
 <div class="container">
-    <div class="body" echarts [options]="echartsOptions" [extentions]="echartsExtentions" [isResizable]="true">
+    <div class="body" echarts [options]="echartsOptions" [extentions]="echartsExtentions" [isResizable]="true"
+        (chartInit)="onChartClick($event)">
     </div>
+</div>
+<div>
+    <div id="viewDiv"></div>
 </div>
