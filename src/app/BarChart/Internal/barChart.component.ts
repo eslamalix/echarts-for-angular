@@ -63,16 +63,16 @@ export class BarChartComponent implements OnInit {
             this.echartsOptions = {
                 dataset: {
                     source: [
-                        Object.keys(this.data),
-                        Object.values(this.data[0]),
-                        Object.values(this.data[1]),
-                        Object.values(this.data[2]),
-                        Object.values(this.data[3]),
-                        Object.values(this.data[4]),
-                        Object.values(this.data[5]),
-                        Object.values(this.data[6]),
-                        Object.values(this.data[7]),
-                        Object.values(this.data[8]),
+                        ['score', 'amount', 'product'],
+                        [89.3, 58212, 'Matcha Latte'],
+                        [57.1, 78254, 'Milk Tea'],
+                        [74.4, 41032, 'Cheese Cocoa'],
+                        [50.1, 12755, 'Cheese Brownie'],
+                        [89.7, 20145, 'Matcha Cocoa'],
+                        [68.1, 79146, 'Tea'],
+                        [19.6, 91852, 'Orange Juice'],
+                        [10.6, 101852, 'Lemon Juice'],
+                        [32.7, 20112, 'Walnut Brownie']
                     ]
                 },
                 xAxis: {},
@@ -82,9 +82,9 @@ export class BarChartComponent implements OnInit {
                         type: 'bar',
                         encode: {
                             // Map "amount" column to x-axis.
-                            x: 'baladiAname',
+                            x: 'amount',
                             // Map "product" row to y-axis.
-                            y: 'licenseTypeDesc'
+                            y: 'product'
                         }
                     }
                 ]
