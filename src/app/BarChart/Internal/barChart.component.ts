@@ -20,11 +20,11 @@ export class BarChartComponent implements OnInit {
     data: any;
     features: any[];
     featurelayer: any;
-    getConfig() {
+    async getConfig() {
         return this.http.get<any>(this.configUrl);
     }
     async showConfig() {
-        await this.getConfig()
+        await (await this.getConfig())
             .subscribe((data: any) => {
                 this.data = data;
                 console.log("data");
@@ -59,25 +59,38 @@ export class BarChartComponent implements OnInit {
     }
 
     async ngOnInit() {
-        await this.showConfig();
-        this.echartsOptions = {
-            dataset: {
-                source: this.data
-            },
-            xAxis: {},
-            yAxis: { type: 'category' },
-            series: [
-                {
-                    type: 'bar',
-                    encode: {
-                        // Map "amount" column to x-axis.
-                        x: 'licenseId',
-                        // Map "product" row to y-axis.
-                        y: 'baladiAname'
+        await this.showConfig().then(() => {
+            this.echartsOptions = {
+                dataset: {
+                    source: [
+                        Object.keys(this.data),
+                        Object.values(this.data[0]),
+                        Object.values(this.data[1]),
+                        Object.values(this.data[2]),
+                        Object.values(this.data[3]),
+                        Object.values(this.data[4]),
+                        Object.values(this.data[5]),
+                        Object.values(this.data[6]),
+                        Object.values(this.data[7]),
+                        Object.values(this.data[8]),
+                    ]
+                },
+                xAxis: {},
+                yAxis: { type: 'category' },
+                series: [
+                    {
+                        type: 'bar',
+                        encode: {
+                            // Map "amount" column to x-axis.
+                            x: 'baladiAname',
+                            // Map "product" row to y-axis.
+                            y: 'licenseTypeDesc'
+                        }
                     }
-                }
-            ]
-        };
+                ]
+            };
+
+        });
 
         loadCss();
         // this will lazy load the ArcGIS API
